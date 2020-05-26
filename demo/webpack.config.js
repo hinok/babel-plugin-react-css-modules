@@ -7,32 +7,46 @@ module.exports = {
   context,
   entry: './index.js',
   module: {
-    loaders: [
+    rules: [
       {
         include: path.resolve(__dirname, './src'),
-        loaders: [
-          'style-loader',
-          'css-loader?importLoader=1&modules&localIdentName=[path]___[name]__[local]___[hash:base64:5]'
+        use: [
+          {
+            loader: 'style-loader',
+          },
+          {
+            loader: 'css-loader',
+            options: {
+              modules: {
+                mode: 'local',
+                localIdentName: "[path]___[name]__[local]___[hash:base64:5]",
+              },
+              sourceMap: true,
+              importLoaders: 1,
+              onlyLocals: false,
+            },
+          },
+          {
+            loader: 'postcss-loader',
+            options: {
+              sourceMap: true,
+            },
+          },
+          {
+            loader: 'sass-loader',
+            options: {
+              sourceMap: true,
+            },
+          },
         ],
-        test: /\.css$/
+        test: /\.scss$/,
       },
       {
         include: path.resolve(__dirname, './src'),
         loader: 'babel-loader',
-        query: {
-          plugins: [
-            '@babel/transform-react-jsx',
-            [
-              'react-css-modules',
-              {
-                context
-              }
-            ]
-          ]
-        },
         test: /\.js$/
       }
-    ]
+    ],
   },
   output: {
     filename: '[name].js'

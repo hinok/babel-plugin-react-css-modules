@@ -1,11 +1,16 @@
-import React from 'react';
-import ReactDom from 'react-dom';
-import AnonymousStyleResolution from './components/AnonymousStyleResolution';
-import NamedStyleResolution from './components/NamedStyleResolution';
-import RuntimeStyleResolution from './components/RuntimeStyleResolution';
+import React from "react";
+import { render } from "react-dom";
+import AnonymousStyleResolution from "./components/AnonymousStyleResolution";
+import NamedStyleResolution from "./components/NamedStyleResolution";
+import RuntimeStyleResolution from "./components/RuntimeStyleResolution";
+import PartialStyleResolution from "./components/PartialStyleResolution";
 
-ReactDom.render(<div>
-  <AnonymousStyleResolution />
-  <NamedStyleResolution />
-  <RuntimeStyleResolution />
-</div>, document.getElementById('main'));
+render(
+  <div>
+    <AnonymousStyleResolution />
+    <NamedStyleResolution />
+    <RuntimeStyleResolution />
+    <PartialStyleResolution />
+  </div>,
+  document.getElementById("main")
+);

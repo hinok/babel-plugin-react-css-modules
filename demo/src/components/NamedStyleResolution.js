@@ -4,7 +4,7 @@
  */
 
 import React from 'react';
-import table from './table.css';
+import table from './table.scss';
 
 export default () => {
   return <div styleName='table.table'>
